@@ -6,7 +6,7 @@ export class DataServices {
 
     constructor(http) {
 		this.httpClient = http;
-		this.BASE_URL = "http://git.ucc.uwm.edu/";  //"http://localhost:9000/api/"; //
+		this.BASE_URL = "http://localhost:3300/api/"; //"http://git.ucc.uwm.edu/";  //
 
 		this.httpClient.configure(config => {
 		config

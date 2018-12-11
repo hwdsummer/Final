@@ -1,11 +1,31 @@
 <template>
-        <div class="collapse navbar-collapse" id="navbarNav">
-                <ul show.bind="authenticated" class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#home">Home</a>
+
+              
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <a class="navbar-brand" href="#home">Help Me!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form show.bind="!authenticated" class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="staticEmail2" class="sr-only">Email</label>
+                    <input type="text" class="form-control" id="staticEmail2" value.bind="email" placeholder="Email">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" value.bind="password" placeholder="Password">
+                </div>
+                <button click.trigger="login()" class="btn btn-primary mb-2">Login</button>
+            </form>
+            <ul ul show.bind="authenticated" class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#users">Users</a>
+                    <a class="nav-link" href="#users">User <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Help Tickes</a>
@@ -13,8 +33,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" click.trigger="logout()">Logout</a>
                 </li>
-                </ul>
-                </div>
-                
-
+            </ul>
+        </div>
+    </nav>
 </template>

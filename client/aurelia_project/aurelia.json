@@ -6,24 +6,21 @@
     "displayName": "Aurelia-CLI"
   },
   "build": {
-    "targets": [
-      {
-        "id": "web",
-        "displayName": "Web",
-        "port": 9000,
-        "index": "index.html",
-        "baseDir": ".",
-        "output": "scripts"
-      }
-    ],
+    "targets": [{
+      "id": "web",
+      "displayName": "Web",
+      "port": 9000,
+      "index": "index.html",
+      "baseDir": ".",
+      "output": "scripts"
+    }],
     "options": {
       "minify": "stage & prod",
       "sourcemaps": "dev & stage",
       "rev": false,
       "cache": "dev & stage"
     },
-    "bundles": [
-      {
+    "bundles": [{
         "name": "app-bundle.js",
         "source": [
           "**/*.{js,json,css,html}"
@@ -44,8 +41,7 @@
           "node_modules/@babel/polyfill/browser.js",
           "node_modules/requirejs/require.js"
         ],
-        "dependencies": [
-          {
+        "dependencies": [{
             "name": "aurelia-fetch-client",
             "path": "../node_modules/aurelia-fetch-client/dist/amd",
             "main": "aurelia-fetch-client"
@@ -55,6 +51,11 @@
             "path": "../node_modules/regenerator-runtime",
             "main": "runtime"
           },
+          { 
+            "name": "aurelia-auth",
+             "path": "../node_modules/aurelia-auth/dist/amd",
+             "main": "aurelia-auth"
+   },  
           "aurelia-bootstrapper",
           "aurelia-loader-default",
           "aurelia-pal-browser",
@@ -70,16 +71,14 @@
       "type": "require",
       "configTarget": "vendor-bundle.js",
       "includeBundleMetadataInConfig": "auto",
-      "plugins": [
-        {
-          "name": "text",
-          "extensions": [
-            ".html",
-            ".css"
-          ],
-          "stub": true
-        }
-      ]
+      "plugins": [{
+        "name": "text",
+        "extensions": [
+          ".html",
+          ".css"
+        ],
+        "stub": true
+      }]
     }
   },
   "platform": {
@@ -128,12 +127,10 @@
     "id": "vscode",
     "displayName": "Visual Studio Code"
   },
-  "unitTestRunners": [
-    {
-      "id": "none",
-      "displayName": "None"
-    }
-  ],
+  "unitTestRunners": [{
+    "id": "none",
+    "displayName": "None"
+  }],
   "integrationTestRunner": {
     "id": "none",
     "displayName": "None"
