@@ -1,0 +1,59 @@
+<template>
+    <div class="container" >
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="list-group-item">
+                    <span click.trigger="back()"><i data-feather="arrow-left-circle"></i></span>
+                    <span click.trigger="save()" style="margin-left:5px;"><i data-feather="save"></i></span>
+                    <span show.bind="helpTicket._id" click.trigger="delete()"><i data-feather="trash-2"></i></span>
+                </div>
+                <form>
+                    <div class="form-group" style="margin-top:20px;">
+                        <label for="title">Title</label>
+                        <input type="text" readonly.bind="helpTicket._id" class="form-control" value.bind="helpTicket.title"
+                            id="title" placeholder="Title">
+                    </div>
+                    <div class="form-group" style="margin-top:20px;">
+                        <label for="content">Description</label>
+                        <textarea type="text" value.bind="helpTicketContent.content" class="form-control" rows="8"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="btn btn-primary">
+                                Browse for files&hellip; <input type="file" style="display: none;" change.delegate="changeFiles()"
+                                    files.bind="files">
+                            </label>
+                        </div>
+                        <div class="col-10">
+                            <ul>
+                                <li repeat.for="file of filesToUpload" class="list-group-item">${file.name}<span
+                                        click.delegate="removeFile($index)" class="pull-right"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" repeat.for="content of helpTickets.helpTicketContentsArray">
+                        <div class="card-body">
+                            <div class="row" style="padding:3px;">
+                                <div class="col-3">
+                                    <span innerhtml.bind="content.dateCreated | formatDate"></span><br />
+                                    ${content.personId.firstName} ${content.personId.lastName}
+                                </div>
+                                <div class="col-9" style="border-left-style: solid; border-left-width: 1px;">
+                                    ${content.content}
+                                </div>
+                                <div>
+                                    <a href="http://localhost:5000/uploadedFiles/helpTickets/${content.file.fileName}" target="_blank">${content.file.originalFileName}</a>
+                                </div>
+                        
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,14 +1,16 @@
-import { inject } from 'aurelia-framework';
-import { DataServices } from './data-services';
+import {
+    inject
+} from 'aurelia-framework';
+import {
+    DataServices
+} from './data-services';
+
 @inject(DataServices)
 export class User {
     constructor(data) {
         this.data = data;
         this.USER_SERVICE = 'users';
     }
-
-
-
     async saveUser(user) {
         let serverResponse;
         if (user) {
@@ -21,13 +23,6 @@ export class User {
         }
     }
 
-    async delete(user){
-        if(user && user._id){
-            await this.data.delete(this.USER_SERVICE + '/' + user._id)
-        }
-        }
-        
-
     async getUsers() {
         let response = await this.data.get(this.USER_SERVICE);
         if (!response.error) {
@@ -36,5 +31,13 @@ export class User {
             this.usersArray = [];
         }
     }
+    async delete(user) {
+        if (user && user._id) {
+            await this.data.delete(this.USER_SERVICE + '/' + user._id)
+        }
+    }
+
+
+
 
 }

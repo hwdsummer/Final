@@ -6,10 +6,19 @@ export class Users {
     constructor(router, users) {
         this.router = router;
         this.users = users;
-        this.message = 'users';
+        this.message = 'Users';
         this.showUserEditForm = false;
     }
+    async activate() {
+        await this.getUsers();
+    }
+    attached() {
+        feather.replace()
+    }
+    async getUsers() {
+        await this.users.getUsers();
 
+    }
     newUser() {
         this.user = {
             firstName: "",
@@ -20,30 +29,36 @@ export class Users {
             password: ""
         }
         this.openEditForm();
+
+
+    }
+    editUser(user) {
+        this.user = user;
+        this.openEditForm();
+
+    }
+    openEditForm() {
+        this.showUserEditForm = true;
+        setTimeout(() => {
+            $("#firstName").focus();
+        }, 500);
     }
 
-    async activate() {
-        await this.getUsers();
-    }
-    attached() {
-        feather.replace()
+
+    async save() {
+        if (this.user && this.user.firstName && this.user.lastName &&
+            this.user.email && this.user.password) {
+            await this.users.saveUser(this.user);
+            this.back();
+            //await this.getUsers();
+
+        }
     }
 
-    async getUsers() {
-        await this.users.getUsers();
-    }
     back() {
         this.showUserEditForm = false;
     }
 
-    async save() {
-        if (this.user && this.user.user && this.user.priotity
-            && this.user.done) {
-            await this.users.saveUser(this.user);
-            await this.getUsers();
-            this.back();
-        }
-    }
 
     async delete() {
         if (this.user) {
@@ -52,15 +67,9 @@ export class Users {
             this.back();
         }
     }
-    editUser(user) {
+    changeActive(user) {
         this.user = user;
-        this.openEditForm();
+        this.save();
     }
-
-    openEditForm() {
-        this.showUserEditForm = true;
-        setTimeout(() => {$("#users").focus();}, 500);
-    }
-
 
 }
