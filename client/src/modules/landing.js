@@ -1,3 +1,3 @@
-export class Landing{
+export class Landing {
     
 }

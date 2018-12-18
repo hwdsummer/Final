@@ -1,0 +1,41 @@
+<template >
+  <div  class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th colspan="4">
+                <span click.trigger="newUser()"><i data-feather="plus"></i></span>
+                <span click.trigger="getUsers()" style="margin-left:5px;"><i data-feather="refresh-cw"></i></span>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Role</th>
+              <th scope="col">Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr repeat.for="user of users.usersArray">
+
+              <td  click.trigger="editUser(user)"> ${user.firstName}</td>
+              <td  click.trigger="editUser(user)">${user.lastName}</td>
+              <td  click.trigger="editUser(user)">${user.role}</td>
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" change.delegate="changeActive(user)" checked.bind="user.active" type="checkbox"
+                    value="" id="defaultCheck1"></div>
+
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</template>

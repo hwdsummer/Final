@@ -1,35 +1,47 @@
 <template>
-    <div class="list-group-item">
-        <span click.trigger="back()"><i data-feather="arrow-left-circle"></i></span>
-        <span click.trigger="save()" style="margin-left:5px;"><i data-feather="save"></i></span>
-        <span show.bind="user._id" click.trigger="delete()"><i data-feather="trash-2"></i></span>
-    </div>
 
-    <div class="form-group" style="margin-top:20px;">
-        <label for="user">User</label>
-        <input type="email" class="form-control" value.bind="user.user" id="user" placeholder="User Item">
-    </div>
 
-    <div class="form-group">
-        <label for="role" value.bind="user.role">Role</label>
-        <select class="form-control" id="role">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+
+        <div class="list-group-item">
+          <span click.trigger="back()"><i data-feather="arrow-left-circle"></i></span>
+          <span click.trigger="save()" style="margin-left:5px;"><i data-feather="save"></i></span>
+          <span show.bind="user._id" click.trigger="delete()"><i data-feather="trash-2"></i></span>
+
+        </div>
+        <div class="form-group" style="margin-top:20px;">
+          <label for="firstName">First Name</label>
+          <input type="email" class="form-control" value.bind="user.firstName" id="firstName" placeholder="First name">
+        </div>
+        <div class="form-group" style="margin-top:20px;">
+          <label for="lastName">Last Name</label>
+          <input type="email" class="form-control" value.bind="user.lastName" id="lastName" placeholder="Last name">
+        </div>
+        <div class="form-group" style="margin-top:20px;">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" value.bind="user.email" id="email" placeholder="Email">
+        </div>
+        <div class="form-group" style="margin-top:20px;">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" value.bind="user.password" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="role" value.bind="user.role">Role</label>
+          <select class="form-control" id="role">
             <option value="user">User</option>
             <option value="staff">Staff</option>
             <option value="admin">Administrator</option>
-        </select>
-    </div>
-
-    <div class="form-check">
-        <input class="form-check-input" checked.bind="user.active" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
+          </select>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" checked.bind="user.active" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
             Active
-        </label>
+          </label>
+        </div>
+      </div>
     </div>
-    <div class="list-group-item">
-        <span click.trigger="back()"><i data-feather="arrow-left-circle"></i></span>
-        <span click.trigger="save()" style="margin-left:5px;"><i data-feather="save"></i></span>
-        <span show.bind="user._id" click.trigger="delete()"><i data-feather="trash-2"></i></span>
-    </div>
-
-    <button click.trigger="save()">Save</button>
+  </div>
 </template>
