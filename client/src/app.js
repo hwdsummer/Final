@@ -1,28 +1,35 @@
+import {AuthorizeStep} from 'aurelia-auth';
+
 export class App {
   configureRouter(config, router) {
     this.router = router;
-    config.map([
-      {
-        route: ['', 'landing'],
-        moduleId: './modules/landing',
-        name: 'Landing'
-      },
-      {
-        route: 'home',
+    config.addPipelineStep('authorize', AuthorizeStep); 
+
+    config.map([{
+        route: [ 'home'],
         moduleId: './modules/home',
-        name: 'Home'
+        name: 'Home',
+        auth: true 
+
+
       },
       {
-        route: ['helpTickets'],
-        moduleId: './modules/helpTickets',
-        name: 'Help Tickets'
+        route: ['','landing'],
+        moduleId: './modules/landing',
+        name: 'Landing',
+        auth: false
+
       },
       {
         route: 'users',
         moduleId: './modules/users',
-        name: ' Users'
+        name: 'Users'
+      },
+      {
+        route: 'helpTickets',
+        moduleId: './modules/helpTickets',
+        name: 'helpTickets'
       }
-
     ]);
   }
 }
